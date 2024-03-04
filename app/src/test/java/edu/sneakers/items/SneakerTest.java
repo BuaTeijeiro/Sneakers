@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
+
 public class SneakerTest {
 @Test
     public void constructorTest() {
@@ -13,7 +14,7 @@ public class SneakerTest {
         assertEquals("555088-105", sneaker.getStyle());
         assertEquals("Jordan 1", sneaker.getName());
     }
-    /*
+    
     @Test
     public void addOfferBid() {
         Sneaker sneaker = new Sneaker("555088-105", "Jordan 1");
@@ -40,5 +41,5 @@ public class SneakerTest {
         Offer ask = new Ask("13", 333);       
         sneaker.add(ask);
         assertEquals(3, sneaker.offers().size());
-    } */
+    } 
 }
