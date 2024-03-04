@@ -4,17 +4,22 @@ public class Ask implements Offer{
     String size;
     int ask;
 
-    Ask(String size, int ask){
+    public Ask(String size, int ask){
         this.size = size;
         this.ask = ask;
     }
-
+    @Override
     public String size(){
         return this.size;
     }
-
-    public int value(){
+    @Override
+    public Integer value(){
         return this.ask;
+    }
+
+    @Override
+    public int compareTo(Offer otherOffer){
+        return this.value().compareTo(otherOffer.value());
     }
 
 }

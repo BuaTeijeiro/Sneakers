@@ -1,7 +1,6 @@
 package edu.sneakers.items;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Sneaker implements Item {
     private String style;
@@ -11,7 +10,7 @@ public class Sneaker implements Item {
     private int bid = 0;
     private ArrayList<Offer> offers = new ArrayList<>();
 
-    Sneaker(String style, String name){
+    public Sneaker(String style, String name){
         this.style = style;
         this.name = name;
     }
@@ -58,7 +57,7 @@ public class Sneaker implements Item {
     }
 
     @Override
-    public List<Offer> offers(){
+    public ArrayList<Offer> offers(){
         return this.offers;
     }
 

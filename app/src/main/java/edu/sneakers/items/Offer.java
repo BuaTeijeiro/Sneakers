@@ -2,5 +2,6 @@ package edu.sneakers.items;
 
 public interface Offer {
     public String size();
-    public int value();
+    public Integer value();
+    public int compareTo(Offer otherOffer);
 }
