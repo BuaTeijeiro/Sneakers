@@ -5,7 +5,7 @@ package edu.sneakers;
 
 import java.util.List;
 
-import edu.sneakers.criteria.Asks;
+
 import edu.sneakers.criteria.Criteria;
 import edu.sneakers.items.Ask;
 import edu.sneakers.items.Bid;
@@ -15,6 +15,14 @@ import edu.sneakers.items.Sale;
 import edu.sneakers.items.Sneaker;
 import edu.sneakers.criteria.Sales;
 import edu.sneakers.criteria.LastSale;
+import edu.sneakers.criteria.Size;
+import edu.sneakers.criteria.AndCriteria;
+import edu.sneakers.criteria.Asks;
+import edu.sneakers.criteria.Bids;
+import edu.sneakers.criteria.MaxBid;
+import edu.sneakers.criteria.MinAsk;
+import edu.sneakers.criteria.Max;
+import edu.sneakers.criteria.Min;
 
 public class App {
     public static void main(String[] args) {
@@ -63,9 +71,9 @@ public class App {
          * offers de la zapatilla. 
          */
 
-        //Criteria bids = new Bids();
-        //System.out.println("\n\t\t All BIDS");
-        //bids.checkCriteria(sneaker).forEach(System.out::print);
+        Criteria bids = new Bids();
+        System.out.println("\n\t\t All BIDS");
+        bids.checkCriteria(sneaker).forEach(System.out::print);
 
         /**
          * Crea el filtro "Asks" que filtra
@@ -73,9 +81,9 @@ public class App {
          * offers de la zapatilla. 
          */
 
-        //Criteria asks = new Asks();
-        //System.out.println("\n\t\t All ASKS");
-        //asks.checkCriteria(sneaker).forEach(System.out::print);
+        Criteria asks = new Asks();
+        System.out.println("\n\t\t All ASKS");
+        asks.checkCriteria(sneaker).forEach(System.out::print);
 
         /**
          * Muestra la bid maxima
@@ -90,10 +98,10 @@ public class App {
          * propiedad bid de sneaker.
          */
 
-        //Criteria maxBid = new MaxBid();
-        //List<Offer> maximum = maxBid.checkCriteria(sneaker);
-        //sneaker.setBid(maximum.isEmpty()? 0 : maximum.get(0).value());
-        //System.out.println(Stockx.draw(sneaker));
+        Criteria maxBid = new MaxBid();
+        List<Offer> maximum = maxBid.checkCriteria(sneaker);
+        sneaker.setBid(maximum.isEmpty()? 0 : maximum.get(0).value());
+        System.out.println(App.draw(sneaker));
 
         /**
          * Muestra la ask minima
@@ -108,10 +116,10 @@ public class App {
          * ask de sneaker.
          */
 
-        //Criteria minAsk = new MinAsk();
-        //List<Offer> minimum = minAsk.checkCriteria(sneaker);
-        //sneaker.setAsk(minimum.isEmpty()? 0 : minimum.get(0).value());
-        //System.out.println(Stockx.draw(sneaker));
+        Criteria minAsk = new MinAsk();
+        List<Offer> minimum = minAsk.checkCriteria(sneaker);
+        sneaker.setAsk(minimum.isEmpty()? 0 : minimum.get(0).value());
+        System.out.println(App.draw(sneaker));
 
         /**
          * Añade ventas (sales) de 
@@ -166,28 +174,28 @@ public class App {
          * un AND de los filtros Size y Sales.
          */
 
-        //System.out.println("\n\t\t SALES 9.5 US");
-        //Criteria size = new Size("9.5");
+        System.out.println("\n\t\t SALES 9.5 US");
+        Criteria size = new Size("9.5");
 
-        //sales = new Sales();
-        //Criteria andSizeSales = new AndCriteria(size, sales);
-        //andSizeSales.checkCriteria(sneaker).forEach(System.out::print);
+        sales = new Sales();
+        Criteria andSizeSales = new AndCriteria(size, sales);
+        andSizeSales.checkCriteria(sneaker).forEach(System.out::print);
 
-        //List<Offer> sizeSales = andSizeSales.checkCriteria(sneaker);
-        //sneaker.setSale(sizeSales.isEmpty()? 
-        //                    0 : 
-        //                    sizeSales.get(sizeSales.size() -1).value());
-        //System.out.println("\n\t\t LAST SALE 9.5 US: " + sneaker.getSale());
+        List<Offer> sizeSales = andSizeSales.checkCriteria(sneaker);
+        sneaker.setSale(sizeSales.isEmpty()? 
+                            0 : 
+                            sizeSales.get(sizeSales.size() - 1).value());
+        System.out.println("\n\t\t LAST SALE 9.5 US: " + sneaker.getSale());
 
         /**
          * Reutiliza el filtro AndCriteria 
          * para filtrar las bids de la talla 9.5
          */   
 
-        //System.out.println("\n\t\t BIDS 9.5 US");
-        //bids = new Bids();
-        //Criteria andSizeBids = new AndCriteria(size, bids);
-        //andSizeBids.checkCriteria(sneaker).forEach(System.out::print);
+        System.out.println("\n\t\t BIDS 9.5 US");
+        bids = new Bids();
+        Criteria andSizeBids = new AndCriteria(size, bids);
+        andSizeBids.checkCriteria(sneaker).forEach(System.out::print);
 
         /**
          * Crea un filtro Max(size, bids)
@@ -195,10 +203,10 @@ public class App {
          * de una talla.
          */
 
-        //Criteria sizeMaxBid = new Max(size, bids);
-        //List<Offer> sizeBid = sizeMaxBid.checkCriteria(sneaker);
-        //sneaker.setBid(sizeBid.isEmpty()? 0 : sizeBid.get(0).value());
-        //System.out.println("\n\t\t MAX BID 9.5 US: " + sneaker.getBid());
+        Criteria sizeMaxBid = new Max(size, bids);
+        List<Offer> sizeBid = sizeMaxBid.checkCriteria(sneaker);
+        sneaker.setBid(sizeBid.isEmpty()? 0 : sizeBid.get(0).value());
+        System.out.println("\n\t\t MAX BID 9.5 US: " + sneaker.getBid());
 
         /**
          * Crea un filtro Min(size, asks)
@@ -206,10 +214,10 @@ public class App {
          * de una talla.
          */
 
-        //Criteria sizeMinAsk = new Min(size, asks);
-        //List<Offer> sizeAsk = sizeMinAsk.checkCriteria(sneaker);
-        //sneaker.setAsk(sizeAsk.isEmpty()? 0 : sizeAsk.get(0).value());
-        //System.out.println("\n\t\t MIN ASK 9.5 US: " + sneaker.getAsk());
+        Criteria sizeMinAsk = new Min(size, asks);
+        List<Offer> sizeAsk = sizeMinAsk.checkCriteria(sneaker);
+        sneaker.setAsk(sizeAsk.isEmpty()? 0 : sizeAsk.get(0).value());
+        System.out.println("\n\t\t MIN ASK 9.5 US: " + sneaker.getAsk());
 
         /**
          * Mostrar info de la zapatilla 
@@ -219,7 +227,7 @@ public class App {
          * - maxima bid
          */
 
-        //System.out.println(Stockx.draw(sneaker));   
+        System.out.println(App.draw(sneaker));   
 
         // mostrar las listas ordenadas
         

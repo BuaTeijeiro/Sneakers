@@ -1,18 +1,22 @@
 package edu.sneakers.criteria;
 
 import java.util.ArrayList;
-import edu.sneakers.items.*;
 
-public class Sales implements Criteria{
-    public Sales(){
-        //Porque si
+import edu.sneakers.items.Bid;
+import edu.sneakers.items.Item;
+import edu.sneakers.items.Offer;
+
+public class Bids implements Criteria{
+    public Bids(){
+        //Je to jen prázdný, zádný problém
     }
 
-    public ArrayList checkCriteria(Item item){
+    @Override
+    public ArrayList<Offer> checkCriteria(Item item) {
         ArrayList<Offer> offers = item.offers();
         ArrayList<Offer> filteredOffers = new ArrayList<>();
         for (Offer offer: offers){
-            if (offer instanceof Sale){
+            if (offer instanceof Bid){
                 filteredOffers.add(offer);
             }
         }
