@@ -13,6 +13,8 @@ import edu.sneakers.items.Item;
 import edu.sneakers.items.Offer;
 import edu.sneakers.items.Sale;
 import edu.sneakers.items.Sneaker;
+import edu.sneakers.criteria.Sales;
+import edu.sneakers.criteria.LastSale;
 
 public class App {
     public static void main(String[] args) {
@@ -119,12 +121,12 @@ public class App {
          * a mas reciente.
          */
 
-        //Sale sale = new Sale("6", 356);
-        //sneaker.add(sale);
-        //sneaker.add(new Sale("9.5", 352));
-        //sneaker.add(new Sale("9.5", 404));
-        //sneaker.add(new Sale("13", 360));
-        //sneaker.add(new Sale("13", 372));
+        Sale sale = new Sale("6", 356);
+        sneaker.add(sale);
+        sneaker.add(new Sale("9.5", 352));
+        sneaker.add(new Sale("9.5", 404));
+        sneaker.add(new Sale("13", 360));
+        sneaker.add(new Sale("13", 372));
 
         /**
          * Crear el filtro "Sales" que filtra
@@ -132,9 +134,9 @@ public class App {
          * offers de la zapatilla.
          */
 
-        //Criteria sales = new Sales();
-        //System.out.println("\n\t\t All SALES");
-        //sales.checkCriteria(sneaker).forEach(System.out::print);
+        Criteria sales = new Sales();
+        System.out.println("\n\t\t All SALES");
+        sales.checkCriteria(sneaker).forEach(System.out::print);
         
         /**
          * Crea un filtro que devuelva
@@ -143,11 +145,11 @@ public class App {
          * en sneaker).
          */
         
-        //Criteria lastSale = new LastSale();
+        Criteria lastSale = new LastSale();
         
-        //List<Offer> actualSale = lastSale.checkCriteria(sneaker);
-        //sneaker.setSale(actualSale.isEmpty()? 0 : actualSale.get(0).value());
-        //System.out.println(Stockx.draw(sneaker));
+        List<Offer> actualSale = lastSale.checkCriteria(sneaker);
+        sneaker.setSale(actualSale.isEmpty()? 0 : actualSale.get(0).value());
+        System.out.println(App.draw(sneaker));
 
         /**
          * Mostrar info de la zapatilla 

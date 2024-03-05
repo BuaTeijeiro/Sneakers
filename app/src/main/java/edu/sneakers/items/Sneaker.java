@@ -65,5 +65,10 @@ public class Sneaker implements Item {
     public void add(Offer newOffer){
         this.offers().add(newOffer);
     }
+
+    @Override
+    public String toString(){
+        return this.getName() + "\n" + this.getStyle();
+    }
 }
 

@@ -21,4 +21,9 @@ public class Sale implements Offer{
     public int compareTo(Offer otherOffer){
         return this.value().compareTo(otherOffer.value());
     }
+
+    @Override
+    public String toString(){
+        return "\n" + this.size() + "\t" + this.value();
+    }
 }

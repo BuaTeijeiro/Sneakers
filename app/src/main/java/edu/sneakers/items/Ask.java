@@ -12,6 +12,7 @@ public class Ask implements Offer{
     public String size(){
         return this.size;
     }
+
     @Override
     public Integer value(){
         return this.ask;
@@ -20,6 +21,11 @@ public class Ask implements Offer{
     @Override
     public int compareTo(Offer otherOffer){
         return this.value().compareTo(otherOffer.value());
+    }
+
+    @Override
+    public String toString(){
+        return "\n" + this.size() + "\t" + this.value();
     }
 
 }
