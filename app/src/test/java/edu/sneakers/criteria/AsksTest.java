@@ -13,7 +13,6 @@ import edu.sneakers.items.Offer;
 import edu.sneakers.items.Sneaker;
 
 public class AsksTest {
-    /*
     @Test
     public void checkCriteria_bids_aks_Test() {
         Sneaker sneaker = new Sneaker("555088-105", "Jordan 1");
@@ -39,6 +38,6 @@ public class AsksTest {
         Criteria asks = new Asks();
         List<Offer> minimum = asks.checkCriteria(sneaker);
         sneaker.setBid(minimum.isEmpty()? 0 : minimum.get(0).value());
-        //assertEquals(0, sneaker.getAsk());
-    }  */
+        assertEquals(0, sneaker.getAsk());
+    }  
 }

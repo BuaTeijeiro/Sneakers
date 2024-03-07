@@ -3,8 +3,11 @@ package edu.sneakers.criteria;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.errorprone.annotations.OverridingMethodsMustInvokeSuper;
+
 import edu.sneakers.items.Item;
 import edu.sneakers.items.Offer;
+import edu.sneakers.items.Ask;
 
 public class MinAsk implements Criteria{
     
@@ -28,4 +31,9 @@ public class MinAsk implements Criteria{
         }
         return minAsk;
     }
+    /*    @Override
+    public List<Offer> checkCriteria(Item item){
+        return item.offers().stream().filter(a -> a instanceof Ask).sorted().f;
+
+    }*/
 }
