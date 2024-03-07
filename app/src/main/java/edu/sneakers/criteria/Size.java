@@ -1,5 +1,8 @@
 package edu.sneakers.criteria;
-import java.util.ArrayList;
+import java.util.List;
+
+import java.util.stream.Collectors;
+
 
 import edu.sneakers.items.*;
 public class Size implements Criteria{
@@ -13,7 +16,7 @@ public class Size implements Criteria{
         return this.size;
     }
 
-    @Override
+    /**@Override
     public ArrayList<Offer> checkCriteria(Item item) {
         ArrayList<Offer> offers = item.offers();
         ArrayList<Offer> filteredOffers = new ArrayList<>();
@@ -23,5 +26,10 @@ public class Size implements Criteria{
             }
         }
         return filteredOffers;
+    }*/
+
+    @Override
+    public List<Offer>checkCriteria(Item item){
+        return item.offers().stream().filter(a -> a.size().equals(this.getSize())).collect(Collectors.toList());
     }
 }

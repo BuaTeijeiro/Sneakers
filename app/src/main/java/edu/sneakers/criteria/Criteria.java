@@ -1,7 +1,7 @@
 package edu.sneakers.criteria;
-import java.util.ArrayList;
+import java.util.List;
 import edu.sneakers.items.*;
 
 public interface Criteria {
-    public ArrayList<Offer> checkCriteria(Item item);
+    public List<Offer> checkCriteria(Item item);
 }

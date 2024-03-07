@@ -1,6 +1,7 @@
 package edu.sneakers.criteria;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.sneakers.items.Item;
 import edu.sneakers.items.Offer;
@@ -12,10 +13,10 @@ public class MinAsk implements Criteria{
     }
 
     @Override
-    public ArrayList<Offer> checkCriteria(Item item) {
+    public List<Offer> checkCriteria(Item item) {
         Asks asksFilter = new Asks();
-        ArrayList<Offer> bids = asksFilter.checkCriteria(item);
-        ArrayList<Offer> minAsk = new ArrayList<>();
+        List<Offer> bids = asksFilter.checkCriteria(item);
+        List<Offer> minAsk = new ArrayList<>();
         if (bids.isEmpty()){
             return minAsk;
         } else{

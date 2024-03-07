@@ -1,6 +1,7 @@
 package edu.sneakers.criteria;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.sneakers.items.*;
 
@@ -10,10 +11,10 @@ public class LastSale implements Criteria {
     }
 
     @Override
-    public ArrayList<Offer> checkCriteria(Item item) {
+    public List<Offer> checkCriteria(Item item) {
         Sales sales = new Sales();
-        ArrayList<Offer> filteredSales = sales.checkCriteria(item);
-        ArrayList<Offer> lastSale = new ArrayList<>();
+        List<Offer> filteredSales = sales.checkCriteria(item);
+        List<Offer> lastSale = new ArrayList<>();
         lastSale.add(filteredSales.get(filteredSales.size()-1));
         return lastSale;
     }

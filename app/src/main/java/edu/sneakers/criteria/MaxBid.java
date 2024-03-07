@@ -1,6 +1,7 @@
 package edu.sneakers.criteria;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.sneakers.items.Item;
 import edu.sneakers.items.Offer;
@@ -11,10 +12,10 @@ public class MaxBid implements Criteria {
     }
 
     @Override
-    public ArrayList<Offer> checkCriteria(Item item) {
+    public List<Offer> checkCriteria(Item item) {
         Bids bidsFilter = new Bids();
-        ArrayList<Offer> bids = bidsFilter.checkCriteria(item);
-        ArrayList<Offer> maxBid = new ArrayList<>();
+        List<Offer> bids = bidsFilter.checkCriteria(item);
+        List<Offer> maxBid = new ArrayList<>();
         if (bids.isEmpty()){
             return maxBid;
         } else{

@@ -1,6 +1,7 @@
 package edu.sneakers.criteria;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.sneakers.items.Bid;
 import edu.sneakers.items.Item;
@@ -12,9 +13,9 @@ public class Bids implements Criteria{
     }
 
     @Override
-    public ArrayList<Offer> checkCriteria(Item item) {
+    public List<Offer> checkCriteria(Item item) {
         ArrayList<Offer> offers = item.offers();
-        ArrayList<Offer> filteredOffers = new ArrayList<>();
+        List<Offer> filteredOffers = new ArrayList<>();
         for (Offer offer: offers){
             if (offer instanceof Bid){
                 filteredOffers.add(offer);
